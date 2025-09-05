@@ -10,16 +10,22 @@ const authRoutes = require('./routes/authRoutes');
 const favoriteRoutes = require('./routes/favoriteRoutes');
 const searchHistoryRoutes = require('./routes/searchHistoryRoutes');
 const customRecipeRoutes = require('./routes/customRecipeRoutes');
+const geminiRoutes = require("./routes/geminiRoutes");
+
  // NEW: Import this
 
 
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-
+// Add to your existing server.js
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:3000", // Your React app's URL
+    credentials: true
+  }));
+  
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
@@ -31,6 +37,9 @@ app.use('/api/auth', authRoutes);
 app.use('/api/favorites', favoriteRoutes);
 app.use('/api/search-history', searchHistoryRoutes);
 app.use('/api/custom-recipes', customRecipeRoutes);
+app.use("/api/gemini", geminiRoutes);
+
+
 // NEW: Use the AI suggestion route
 
 // Simple test route

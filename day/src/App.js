@@ -8,7 +8,7 @@ import FavoriteRecipes from "./components/FavoriteRecipes";
 import SearchHistory from "./components/SearchHistory";
 import AddCustomRecipe from "./components/AddCustomRecipe"; // NEW: Import AddCustomRecipe
 import MyCustomRecipes from "./components/MyCustomRecipes";
-
+import AIChef from './components/AIChef';
 import "./style.css";
 
 const App = () => {
@@ -27,6 +27,7 @@ const App = () => {
                     <Route path="/my-recipes/edit/:id" element={<AddCustomRecipe />} />
                      {/* NEW: Route for editing */}
                      {/* This route is essential */}
+                     <Route path="/ai-chef" element={<AIChef />} />
 
                                </Routes>
             </div>

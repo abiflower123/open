@@ -167,7 +167,7 @@ const RecipeSearch = () => {
 
     return (
         <div>
-            <header>Smart Recipe Generator</header>
+            
             <div className="search-container">
                 <input
                     type="text"

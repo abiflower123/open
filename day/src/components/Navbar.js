@@ -20,7 +20,7 @@ const Navbar = () => {
                         <Link to="/favorites" className="nav-link">My Favorites</Link>
                         <Link to="/history" className="nav-link">Search History</Link>
                         <Link to="/my-recipes" className="nav-link">My Recipes</Link>
-                        <Link to="/ai-suggest" className="nav-link">AI Suggestions</Link> {/* NEW */}
+                        
                         <button onClick={handleLogout} className="nav-link logout-button">Logout</button>
                     </>
                 ) : (
