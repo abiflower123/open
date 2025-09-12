@@ -33,7 +33,8 @@ const AddCustomRecipe = () => {
                     const config = {
                         headers: { 'x-auth-token': token }
                     };
-                    const res = await axios.get(`http://localhost:5000/api/custom-recipes/${id}`, config);
+                    const res = await axios.get(`https://backend-recepie-generator.onrender.com
+/api/custom-recipes/${id}`, config);
                     const recipe = res.data;
 
                     setTitle(recipe.title);
@@ -94,11 +95,13 @@ const AddCustomRecipe = () => {
 
             if (id) {
                 // Update existing recipe
-                await axios.put(`http://localhost:5000/api/custom-recipes/${id}`, recipeData, config);
+                await axios.put(`https://backend-recepie-generator.onrender.com
+/api/custom-recipes/${id}`, recipeData, config);
                 setSuccess('Recipe updated successfully!');
             } else {
                 // Add new recipe
-                await axios.post('http://localhost:5000/api/custom-recipes', recipeData, config);
+                await axios.post('https://backend-recepie-generator.onrender.com
+/api/custom-recipes', recipeData, config);
                 setSuccess('Recipe added successfully!');
                 // Clear form after successful addition
                 setTitle('');
