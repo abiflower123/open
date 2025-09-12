@@ -15,7 +15,8 @@ const Register = () => {
         setMessage(''); // Clear previous messages
 
         try {
-            const res = await axios.post('http://localhost:5000/api/auth/register', { username, password });
+            const res = await axios.post('https://backend-recepie-generator.onrender.com
+/api/auth/register', { username, password });
             localStorage.setItem('token', res.data.token);
             setMessage(res.data.msg || 'Registration successful!');
             navigate('/'); // Redirect to home or dashboard
