@@ -30,13 +30,7 @@ const Filters = ({ setFilters, initialFilters = {} }) => { // NEW: Accept initia
                     {/* Add more cuisine options if needed */}
                 </select>
 
-                <input
-                    type="number"
-                    placeholder="Max Cooking Time(min)"
-                    value={maxTime} // Bind value to state
-                    onChange={(e) => setMaxTime(e.target.value)}
-                />
-
+                
                 <button onClick={applyFilters}>Apply Filters</button>
             </div>
         </div>
