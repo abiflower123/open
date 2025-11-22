@@ -23,7 +23,7 @@ const MyCustomRecipes = () => {
             const config = {
                 headers: { 'x-auth-token': token }
             };
-            const res = await axios.get('https://backend-recepie-generator.onrender.com/api/custom-recipes', config);
+            const res = await axios.get('https://backend-e01b.onrender.com/api/custom-recipes', config);
             setCustomRecipes(res.data);
             setLoading(false);
         } catch (err) {
@@ -48,7 +48,7 @@ const MyCustomRecipes = () => {
                 const config = {
                     headers: { 'x-auth-token': token }
                 };
-                await axios.delete(`https://backend-recepie-generator.onrender.com/api/custom-recipes/${recipeId}`, config);
+                await axios.delete(`https://backend-e01b.onrender.com/api/custom-recipes/${recipeId}`, config);
                 alert('Recipe deleted successfully!');
                 fetchCustomRecipes(); // Re-fetch recipes to update the list
             } catch (err) {
