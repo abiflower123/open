@@ -1,5 +1,3 @@
-// src/components/Register.js (Hypothetical, as you haven't provided this file directly)
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -20,18 +18,13 @@ const Register = () => {
             setMessage(res.data.msg || 'Registration successful!');
             navigate('/'); // Redirect to home or dashboard
         } catch (error) {
-            // --- CRITICAL FIX HERE ---
             if (error.response) {
-                // The server responded with a status code other than 2xx
-                // Access error.response.data (if the server sends JSON errors)
                 setMessage(error.response.data.msg || 'Registration failed from server. Please try again.');
                 console.error('Registration error (server response):', error.response.data);
             } else if (error.request) {
-                // The request was made but no response was received (e.g., server not running)
                 setMessage('No response from server. Please ensure the backend is running and reachable.');
                 console.error('Registration error (no server response):', error.request);
             } else {
-                // Something else happened in setting up the request that triggered an Error
                 setMessage('An unexpected error occurred during registration. Please try again.');
                 console.error('Registration error (Axios setup):', error.message);
             }
@@ -39,9 +32,11 @@ const Register = () => {
     };
 
     return (
+        // The outer div already has the correct class: 'auth-container'
         <div className="auth-container">
             <h2>Register</h2>
-            <form onSubmit={onSubmit}>
+            {/* ADDED CLASS: 'auth-form' */}
+            <form onSubmit={onSubmit} className="auth-form">
                 <div className="form-group">
                     <label>Username:</label>
                     <input
@@ -60,7 +55,10 @@ const Register = () => {
                         required
                     />
                 </div>
-                <button type="submit">Register</button>
+                {/* ADDED CLASS: 'auth-button' */}
+                <button type="submit" className="auth-button">
+                    Register
+                </button>
             </form>
             {message && <p className={message.includes('successful') ? 'success-message' : 'error-message'}>{message}</p>}
         </div>
