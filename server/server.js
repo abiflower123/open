@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(express.json());
 app.use(cors({
-    origin: "http://localhost:3000", // Your React app's URL
+    origin: "https://front-sen0.onrender.com/login", // Your React app's URL
     credentials: true
   }));
   
