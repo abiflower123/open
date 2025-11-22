@@ -70,7 +70,7 @@ const RecipeSearch = () => {
                             'x-auth-token': token
                         }
                     };
-                    await axios.post('https://backend-recepie-generator.onrender.com/api/search-history', {
+                    await axios.post('https://backend-e01b.onrender.com/api/search-history', {
                         ingredients: currentIngredients,
                         filters: currentFilters
                     }, config);
