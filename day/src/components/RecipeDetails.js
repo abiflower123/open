@@ -43,14 +43,12 @@ const RecipeDetails = ({ recipe }) => {
             // Assuming a save/toggle mechanism
             if (isFavorited) {
                 // If already favorited, remove it
-                await axios.delete(`https://backend-recepie-generator.onrender.com
-/api/favorites/${recipe.id}`, config);
+                await axios.delete(`https://backend-recepie-generator.onrender.com/api/favorites/${recipe.id}`, config);
                 alert('Recipe removed from favorites!');
                 setIsFavorited(false); // Update local state
             } else {
                 // If not favorited, add it
-                await axios.post('https://backend-recepie-generator.onrender.com
-/api/favorites', favoriteData, config);
+                await axios.post('https://backend-recepie-generator.onrender.com/api/favorites', favoriteData, config);
                 alert('Recipe added to favorites!');
                 setIsFavorited(true); // Update local state
             }
