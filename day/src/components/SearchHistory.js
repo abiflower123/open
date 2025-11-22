@@ -24,8 +24,7 @@ const SearchHistory = () => {
                     'x-auth-token': token
                 }
             };
-            const res = await axios.get('https://backend-recepie-generator.onrender.com
-/api/search-history', config);
+            const res = await axios.get('https://backend-recepie-generator.onrender.com/api/search-history', config);
             setHistory(res.data);
             setLoading(false);
         } catch (err) {
