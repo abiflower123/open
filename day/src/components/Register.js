@@ -5,37 +5,34 @@ import { useNavigate } from 'react-router-dom';
 const Register = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [message, setMessage] = useState(''); // To display success/error messages
+    const [message, setMessage] = useState(''); 
     const navigate = useNavigate();
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        setMessage(''); // Clear previous messages
+        setMessage('');
 
         try {
             const res = await axios.post('https://backend-e01b.onrender.com/api/auth/register', { username, password });
             localStorage.setItem('token', res.data.token);
             setMessage(res.data.msg || 'Registration successful!');
-            navigate('/'); // Redirect to home or dashboard
+            navigate('/'); 
         } catch (error) {
             if (error.response) {
                 setMessage(error.response.data.msg || 'Registration failed from server. Please try again.');
-                console.error('Registration error (server response):', error.response.data);
             } else if (error.request) {
                 setMessage('No response from server. Please ensure the backend is running and reachable.');
-                console.error('Registration error (no server response):', error.request);
             } else {
                 setMessage('An unexpected error occurred during registration. Please try again.');
-                console.error('Registration error (Axios setup):', error.message);
             }
         }
     };
 
     return (
-        // The outer div already has the correct class: 'auth-container'
+        // The .auth-container (max-width: 400px) already controls the box width.
         <div className="auth-container">
             <h2>Register</h2>
-            {/* ADDED CLASS: 'auth-form' */}
+            {/* 1. ADDED CLASS: 'auth-form' to enable input styling. */}
             <form onSubmit={onSubmit} className="auth-form">
                 <div className="form-group">
                     <label>Username:</label>
@@ -55,7 +52,7 @@ const Register = () => {
                         required
                     />
                 </div>
-                {/* ADDED CLASS: 'auth-button' */}
+                {/* 2. ADDED CLASS: 'auth-button' to give the button full width and correct style. */}
                 <button type="submit" className="auth-button">
                     Register
                 </button>
