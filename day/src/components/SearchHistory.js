@@ -24,7 +24,7 @@ const SearchHistory = () => {
                     'x-auth-token': token
                 }
             };
-            const res = await axios.get('https://backend-recepie-generator.onrender.com/api/search-history', config);
+            const res = await axios.get('https://backend-e01b.onrender.com/api/search-history', config);
             setHistory(res.data);
             setLoading(false);
         } catch (err) {
@@ -63,8 +63,7 @@ const SearchHistory = () => {
                     'x-auth-token': token
                 }
             };
-            await axios.delete(`https://backend-recepie-generator.onrender.com
-/api/search-history/${id}`, config);
+            await axios.delete(`https://backend-e01b.onrender.com/api/search-history/${id}`, config);
             alert('Search entry deleted!');
             // Refresh the history list
             fetchSearchHistory();
