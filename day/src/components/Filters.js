@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from "react"; // NEW: Import useEffect
+import React, { useState } from "react"; // Removed useEffect from import
 
-const Filters = ({ setFilters, initialFilters = {} }) => { // NEW: Accept initialFilters prop
+const Filters = ({ setFilters, initialFilters = {} }) => {
     const [cuisine, setCuisine] = useState(initialFilters.cuisine || "");
-    const [maxTime, setMaxTime] = useState(initialFilters.maxReadyTime || "");
 
-    // NEW: useEffect to update filter states when initialFilters prop changes
-    useEffect(() => {
-        setCuisine(initialFilters.cuisine || "");
-        // Max time might be 0, so explicitly check for null/undefined/empty string
-        setMaxTime(initialFilters.maxReadyTime !== null && initialFilters.maxReadyTime !== undefined && initialFilters.maxReadyTime !== '' ? initialFilters.maxReadyTime : "");
-    }, [initialFilters]);
+    // Initialization fixed to correctly handle '0' (zero) as a valid initial value.
+    // This ensures that the state only uses the prop if it's defined, otherwise it defaults to "".
+    const [maxTime, setMaxTime] = useState(
+        initialFilters.maxReadyTime !== null && initialFilters.maxReadyTime !== undefined
+            ? initialFilters.maxReadyTime : ""
+    );
+
+    // *** The useEffect block that was resetting user input has been removed. ***
 
     const applyFilters = () => {
         setFilters({
             cuisine: cuisine,
-            maxReadyTime: maxTime ? Number(maxTime) : null // Ensure maxTime is a number or null
+            // Ensure maxTime is converted to a number or null if the input is empty
+            maxReadyTime: maxTime ? Number(maxTime) : null 
         });
     };
 
@@ -33,8 +35,8 @@ const Filters = ({ setFilters, initialFilters = {} }) => { // NEW: Accept initia
                 <input
                     type="number"
                     placeholder="Max Cooking Time(min)"
-                    value={maxTime} // Bind value to state
-                    onChange={(e) => setMaxTime(e.target.value)}
+                    value={maxTime} // The value is now controlled solely by local state
+                    onChange={(e) => setMaxTime(e.target.value)} // User input updates local state directly and is preserved
                 />
 
                 <button onClick={applyFilters}>Apply Filters</button>
