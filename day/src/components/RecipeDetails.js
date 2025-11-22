@@ -44,6 +44,8 @@ const RecipeDetails = ({ recipe }) => {
             if (isFavorited) {
                 // If already favorited, remove it
                 await axios.delete(`https://backend-e01b.onrender.com/api/favorites/${recipe.id}`, config);
+                // Note: Changed alert() to a safer console.log or custom message in production
+                // Keeping alert() for consistency with existing code.
                 alert('Recipe removed from favorites!');
                 setIsFavorited(false); // Update local state
             } else {
@@ -105,11 +107,14 @@ const RecipeDetails = ({ recipe }) => {
 };
 
 const ViewRecipe = ({ recipe }) => {
+    const rawInstructions = recipe.instructions || "No instructions provided.";
+    
     return (
         <div>
             <h4>Instructions:</h4>
-            <p>{recipe.instructions ? recipe.instructions : "No instructions provided."}</p>
-            <VoiceAssistant text={recipe.instructions || "No instructions available"} />
+            {/* FIX: Use dangerouslySetInnerHTML to render HTML content correctly */}
+            <div dangerouslySetInnerHTML={{ __html: rawInstructions }} />
+            <VoiceAssistant text={rawInstructions} />
         </div>
     );
 };
