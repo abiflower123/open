@@ -25,8 +25,7 @@ const FavoriteRecipes = () => {
                         'x-auth-token': token
                     }
                 };
-                const res = await axios.get('https://backend-recepie-generator.onrender.com
-/api/favorites', config);
+                const res = await axios.get('https://backend-recepie-generator.onrender.com/api/favorites', config);
                 // The backend only stores basic info (id, title, image) for favorites.
                 // To display full details, we would ideally refetch from Spoonacular for each favorite.
                 // For this example, we'll use the basic info stored in the FavoriteRecipe model
