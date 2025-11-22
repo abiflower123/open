@@ -99,8 +99,7 @@ const AddCustomRecipe = () => {
                 setSuccess('Recipe updated successfully!');
             } else {
                 // Add new recipe
-                await axios.post('https://backend-recepie-generator.onrender.com
-/api/custom-recipes', recipeData, config);
+                await axios.post('https://backend-recepie-generator.onrender.com/api/custom-recipes', recipeData, config);
                 setSuccess('Recipe added successfully!');
                 // Clear form after successful addition
                 setTitle('');
